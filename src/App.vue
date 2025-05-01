@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Camisetas Históricas de Independiente</h1>
+    <h1>Camisetas Históricas de Independiente test camisetas.json</h1>
     <div class="camisetas">
       <div v-for="camiseta in camisetas" :key="camiseta.anio" class="card">
         <img :src="camiseta.imagen" :alt="'Camiseta ' + camiseta.anio" />
