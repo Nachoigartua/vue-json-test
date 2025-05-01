@@ -21,11 +21,12 @@ onMounted(async () => {
   camisetas.value = await res.json()
 
   // Ajustar rutas de imagen también
-  camisetas.value.forEach(c => {
-    if (!c.imagen.startsWith('http')) {
-      c.imagen = `${import.meta.env.BASE_URL.replace(/\/$/, '')}${c.imagen}`
-    }
-  })
+camisetas.value.forEach(c => {
+  if (!c.imagen.startsWith('http')) {
+    c.imagen = `${import.meta.env.BASE_URL.replace(/\/$/, '')}${c.imagen.replace(/^\//, '')}`
+  }
+  console.log('Ruta ajustada de la imagen:', c.imagen)
+})
 })
 </script>
 
