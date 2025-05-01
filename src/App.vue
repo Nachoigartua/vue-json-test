@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Camisetas Históricas de Independiente test camisetas.json</h1>
+    <h1>Camisetas Históricas de Independiente test camisetas.json ultimo cambio</h1>
     <div class="camisetas">
       <div v-for="camiseta in camisetas" :key="camiseta.anio" class="card">
         <img :src="camiseta.imagen" :alt="'Camiseta ' + camiseta.anio" />
@@ -17,17 +17,17 @@ import { ref, onMounted } from 'vue'
 const camisetas = ref([])
 
 onMounted(async () => {
-  const res = await fetch(`${import.meta.env.BASE_URL}camisetas.json`)
-  camisetas.value = await res.json()
+  const res = await fetch(`${import.meta.env.BASE_URL}camisetas.json`);
+  camisetas.value = await res.json();
 
   // Ajustar rutas de imagen también
-camisetas.value.forEach(c => {
-  if (!c.imagen.startsWith('http')) {
-    c.imagen = `${import.meta.env.BASE_URL.replace(/\/$/, '')}${c.imagen.replace(/^\//, '')}`
-  }
-  console.log('Ruta ajustada de la imagen:', c.imagen)
-})
-})
+  camisetas.value.forEach(c => {
+    if (!c.imagen.startsWith('http')) {
+      c.imagen = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${c.imagen.replace(/^\//, '')}`;
+    }
+    console.log('Ruta ajustada de la imagen:', c.imagen);
+  });
+});
 </script>
 
 
